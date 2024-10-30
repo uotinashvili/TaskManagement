@@ -1,20 +1,33 @@
 Create .env file:
 
+```bash
 PORT=5001
 DATABASE_URL=postgres://<your_db_username>@localhost:5432/task_management
 JWT_SECRET=<any_jwt_secret_string>
+```
+
 
 As a value of JWT_SECRET You can write any encrypted string.
 
 In Postgresql Create database “task_management”
 
-Run: npm install
+Run: 
+```bash
+npm install
+```
 
-Run: node server.js (it will automatically creates tables)
+
+Run: 
+```bash
+node server.js
+```
+(it will automatically creates tables)
 
 urls:
 
-Register User:
+## Users
+
+### Register User:
 POST: localhost:5001/api/auth/register
 Json body:{
     "email": "ucha@gmail.com",
@@ -22,7 +35,7 @@ Json body:{
 }
 
 
-Login User:
+### Login User:
 POST: localhost:5001/api/auth/login
 Json body:{
     "email": "ucha@gmail.com",
@@ -32,11 +45,13 @@ Json body:{
 Use responded token for Tasks methods. Put them in header:key: Authorization
 Value: generated token
 
-GET: 
+## Tasks
+
+### GET: 
 Filter by pagination: localhost:5001/api/tasks?page=1&limit=10
 Filter by status: localhost:5001/api/tasks?status=pending&page=1&limit=10
 
-POST (create task)
+### POST (create task)
 localhost:5001/api/tasks
 Body example:
 {
@@ -48,7 +63,7 @@ Body example:
 Statuses could be: 'pending', 'completed', 'in-progress'
 
 
-POST (update task)
+### POST (update task)
 localhost:5001/api/tasks/<task_id>
 Body example:
 {
@@ -59,7 +74,7 @@ Body example:
 
 Statuses could be: 'pending', 'completed', 'in-progress'
 
-DELETE (delete task)
+### DELETE (delete task)
 localhost:5001/api/tasks/<task_id>
 
 Statuses could be: 'pending', 'completed', 'in-progress'
